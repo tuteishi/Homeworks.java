@@ -19,10 +19,7 @@ public class Cat {
     }
 
     public static void chain(){
-
-        Cat cat = new Cat();
         int numberOfChoice = 0;
-
         while (numberOfChoice >= 0 ){
             System.out.println("Choose way:");
             System.out.println("1. While (defolt) \n" +
@@ -36,23 +33,18 @@ public class Cat {
 
             switch (numberOfChoice) {
                 case 1:
-                    numberOfChoice = 1;
                     defoltCat();
                     break;
                 case 2:
-                    numberOfChoice = 2;
                     whileNameAge();
                     break;
                 case 3:
-                    numberOfChoice = 3;
                     forNameAgeSettersGettrs();
                     break;
                 case 4:
-                    numberOfChoice = 4;
                     doWhileNameAge();
                     break;
                 case 5:
-                    numberOfChoice = 5;
                     forEachNameAge();
                     break;
                 default:
@@ -187,14 +179,14 @@ public class Cat {
         int ageCat [] = new int [5];
         Random numberCat = new Random();
 
-        for (int ageCatNumber:ageCat) {
+        for (int number:ageCat) {
             for (String nameCatNumber: nameCat) {
 
-                int number = numberCat.nextInt(5);
+                number = numberCat.nextInt(5);
                 System.out.print("Cat name: " + nameCat[number] + "  ");
                 break;
             }
-               int  number = numberCat.nextInt(28);
+                number = numberCat.nextInt(28);
                 System.out.println("Cat age: " + number);
         }
     }
