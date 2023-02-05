@@ -9,8 +9,8 @@ public class Array2D {
     Random random = new Random();
     private String[][] array2D = new String[10][10];
     private String[] diagonals = new String[20];
-    private double [] diagonalsToNumber = new double[6];
-    private int [] rounding = new int[6];
+    private double[] diagonalsToNumber = new double[6];
+    private int[] rounding = new int[6];
 
     private String generateNumbers() {
         String number = String.valueOf(Math.random() * 10).substring(0, 7);
