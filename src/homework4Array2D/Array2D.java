@@ -13,7 +13,7 @@ public class Array2D {
     private int [] rounding = new int[6];
 
     private String generateNumbers() {
-        String number= String.valueOf(Math.random() * 10).substring(0, 7);
+        String number = String.valueOf(Math.random() * 10).substring(0, 7);
         return number;
     }
 
@@ -123,6 +123,3 @@ public class Array2D {
         }
     }
 }
-
-
-
