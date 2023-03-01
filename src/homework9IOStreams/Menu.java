@@ -17,11 +17,10 @@ public class Menu {
                     6 - delete order;
                     0 - exit.
                     """);
-
             Scanner scanner = new Scanner(System.in);
             String choiceNumber = scanner.next();
             try {
-            int number = Integer.parseInt(choiceNumber);
+                int number = Integer.parseInt(choiceNumber);
                 Product product = new Product();
                 Order order = new Order();
                 if (number > 6 || number < 0) {
