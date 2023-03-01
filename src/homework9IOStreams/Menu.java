@@ -25,7 +25,7 @@ public class Menu {
                 Product product = new Product();
                 Order order = new Order();
                 if (number > 6 || number < 0) {
-                    throw new NegativeNumberException("Entered number is not correct, try again.");
+                    throw new NegativeNumberException();
                 }
                 switch (number) {
                     case 1 -> product.showProducts();
@@ -37,10 +37,9 @@ public class Menu {
                     case 0 -> System.exit(0);
                 }
             } catch (NumberFormatException | NegativeNumberException e) {
+                System.err.println("The entered data is incorrect, try again...");
                 e.printStackTrace();
             }
         }
     }
 }
-
-

@@ -27,15 +27,12 @@ public class rainbow {
 
         switch (number) {
             case 1:
-                number = 1;
                 if_else();
                 break;
             case 2:
-                number = 2;
                 swich_case();
                 break;
             case 3:
-                number = 3;
                 combi();
                 break;
             default:

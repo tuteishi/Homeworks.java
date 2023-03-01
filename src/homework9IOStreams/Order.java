@@ -19,7 +19,7 @@ public class Order {
     File file = Path.of("resources", "order.txt").toFile();
 
     public Long generatedId() {
-        return idOrder = (long) (Math.random() * 2147483647);
+        return idOrder = 1000000000 + (long) (Math.random() * 2147483647);
     }
 
     public void createdFileOrder() {
@@ -31,12 +31,12 @@ public class Order {
     }
 
     public void addOrder() {
-        Path path = Path.of("resources", "order.txt");
+//        Path path = Path.of("resources", "order.txt");
         List<Product> products = new ArrayList<>();
         while (true) {
             System.out.println("Enter product name for order or '0' for finish add product: ");
             Scanner scanner = new Scanner(System.in);
-            String productName = scanner.next();
+            String productName = scanner.nextLine();
             if (productName.equals("0")) {
                 break;
             }
@@ -45,11 +45,12 @@ public class Order {
         }
         System.out.println("Enter order name: ");
         Scanner scanner = new Scanner(System.in);
-        String orderName = scanner.next();
+        String orderName = scanner.nextLine();
         Order order = new Order(orderName, products);
-        try {
-            Files.write(path, order.toString().getBytes());
-
+        try (FileWriter fileWriter = new FileWriter(file, true)){
+            fileWriter.write(order.toString());
+            fileWriter.write(System.lineSeparator());
+//            Files.write(path, order.toString().getBytes());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -82,7 +83,7 @@ public class Order {
             String choiceID = scanner.next();
             while ((line = bufferedReader.readLine()) != null) {
                 if (line.regionMatches(9, choiceID, 0, 10) |
-                        line.regionMatches(24, choiceID, 0, 10)) {
+                        line.regionMatches(23, choiceID, 0, 10)) {
                     System.out.println("Order with ID: " + choiceID + " delete.");
                 } else {
                     lines.add(line);
@@ -91,7 +92,7 @@ public class Order {
             bufferedReader.close();
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file, StandardCharsets.UTF_8));
             for (String s : lines) {
-                bufferedWriter.write(s.toString());
+                bufferedWriter.write(s);
                 bufferedWriter.newLine();
             }
             bufferedWriter.close();
@@ -123,10 +124,8 @@ public class Order {
                         ", Order name:'" + nameOrder + '\'' +
                         ", Date:" + dateOrder +
                         System.lineSeparator() +
-                        "  Products of order(ID: " + idOrder
+                        "  Products of order(ID:" + idOrder
                         +"): "
                         + products;
     }
 }
-
-

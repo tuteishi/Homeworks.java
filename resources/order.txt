@@ -1,0 +1,4 @@
+Order ID:2001110629, Order name:'Sport bikes', Date:Wed Mar 01 20:28:46 MSK 2023
+  Products of order(ID:2001110629): [ |Product ID:2252594790| Product name:'Honda'| Date:Wed Mar 01 20:28:16 MSK 2023|,  |Product ID:2806806716| Product name:'Kawasaki'| Date:Wed Mar 01 20:28:21 MSK 2023|,  |Product ID:1325768964| Product name:'Yamaha'| Date:Wed Mar 01 20:28:32 MSK 2023|]
+Order ID:2376066265, Order name:'Enduro bikes', Date:Wed Mar 01 20:29:31 MSK 2023
+  Products of order(ID:2376066265): [ |Product ID:1479556422| Product name:'KTM'| Date:Wed Mar 01 20:28:59 MSK 2023|,  |Product ID:1753596764| Product name:'Husqwarna'| Date:Wed Mar 01 20:29:11 MSK 2023|,  |Product ID:2775897765| Product name:'Gasgas'| Date:Wed Mar 01 20:29:18 MSK 2023|]

@@ -2,46 +2,46 @@ package homework7Collections;
 
 import java.util.*;
 
-public  class MyArrayList<T> implements MyList <T> {
+public class MyArrayList<T> implements MyList<T> {
     private int count = 0;
-    private Object [] elements = new Object[10];
+    private Object[] elements = new Object[10];
 
     @Override
-    public int size(){
+    public int size() {
         count = 0;
         for (Object object : elements) {
-            if (object != null){
+            if (object != null) {
                 count++;
             }
         }
-        if (count == elements.length){
+        if (count == elements.length) {
             elements = Arrays.copyOf(elements, (int) Math.round(elements.length * 1.5));
         }
         return count;
     }
 
     @Override
-    public boolean isEmpty(){
-        size ();
-        if (count > 0){
+    public boolean isEmpty() {
+        if (size() > 0) {
             return true;
-        }else return false;
+        } else return false;
     }
 
     @Override
-    public boolean contains(Object value){
+    public boolean contains(Object value) {
         count = 0;
         for (Object element : elements) {
-            if (Objects.equals(element, value)){
+            if (Objects.equals(element, value)) {
                 count++;
             }
-        } if (count > 0 ){
+        }
+        if (count > 0) {
             return true;
-        }else return false;
+        } else return false;
     }
 
     @Override
-    public boolean add(T value){
+    public boolean add(T value) {
         count = 0;
         if (size() <= 9) {
             for (int i = 0; i < elements.length; i++) {
@@ -51,81 +51,94 @@ public  class MyArrayList<T> implements MyList <T> {
                     break;
                 }
             }
-        }else {
+        } else {
             for (int i = 10; i < elements.length; i++) {
-                if (elements [i] == null) {
+                if (elements[i] == null) {
                     elements[i] = value;
                     count++;
                     break;
                 }
             }
         }
-        if(count > 0){
+        if (count > 0) {
             elements = Arrays.copyOf(elements, size());
             return true;
-        }else return false;
+        } else return false;
     }
 
     @Override
-    public boolean add(int index, T value){
-        count = 0;
-            for (int i = 0; i < elements.length; i++) {
-                if (i == index) {
-                    elements = Arrays.copyOf(elements,  elements.length +1);
-                    System.arraycopy(elements,i,elements,i+1,elements.length-i-1);
-                    elements [i] = value;
-                    count++;
-                    break;
-                }
-            }
-
-        if(count > 0){
-            elements = Arrays.copyOf(elements, size());
-            return true;
-        }else return false;
+    public boolean add(int index, T value) {
+//        count = 0;
+//            for (int i = 0; i < elements.length; i++) {
+//                if (i == index) {
+//                    elements = Arrays.copyOf(elements,  elements.length +1);
+//                    System.arraycopy(elements,i,elements,i+1,elements.length-i-1);
+//                    elements [i] = value;
+//                    count++;
+//                    break;
+//                }
+//            }
+//
+//        if(count > 0){
+//            elements = Arrays.copyOf(elements, size());
+//            return true;
+//        }else return false;
+        elements = Arrays.copyOf(elements, elements.length + 1);
+        System.arraycopy(elements, index, elements, index + 1, elements.length - index - 1);
+        elements[index] = value;
+        elements = Arrays.copyOf(elements, size());
+        return true;
     }
 
     @Override
-    public boolean remove(Object value){
+    public boolean remove(Object value) {
         count = 0;
         for (int i = 0; i < elements.length; i++) {
-            if (Objects.equals(elements [i], value)){
-                System.arraycopy(elements,i+1,elements,i,elements.length-i-1);
-                elements [elements.length-1] = null;
-                count ++;
+            if (Objects.equals(elements[i], value)) {
+                System.arraycopy(elements, i + 1, elements, i, elements.length - i - 1);
+                elements[elements.length - 1] = null;
+                count++;
             }
         }
-        if(count > 0){
+        if (count > 0) {
             elements = Arrays.copyOf(elements, size());
             return true;
-        }else return false;
+        } else return false;
     }
 
     @Override
-    public T get(int index){
-        for (int i = 0; i < elements.length; i++) {
-            if (i == index) {
-                return (T) elements [i];
-            }
-            elements = Arrays.copyOf(elements, size());
-
-        }
-        return null;
+    public T get(int index) {
+//        for (int i = 0; i < elements.length; i++) {
+//            if (i == index) {
+//                return (T) elements[i];
+//            }
+//            elements = Arrays.copyOf(elements, size());
+//
+//        }
+//        return null;
+        return (T) elements[index];
     }
 
     @Override
-    public T remove(int index){
+    public T remove(int index) {
+//        Object a = null;
+//        for (int i = 0; i < elements.length; i++) {
+//            if (i == index) {
+//                a = (T) elements[i];
+//                System.arraycopy(elements, i + 1, elements, i, elements.length - i - 1);
+//                elements[elements.length - 1] = null;
+//                break;
+//            }
+//        }
+//        elements = Arrays.copyOf(elements, size());
+//        return (T) a;
         Object a = null;
-        for (int i = 0; i < elements.length; i++) {
-            if (i == index){
-                a = (T) elements [i];
-                System.arraycopy(elements,i+1,elements,i,elements.length-i-1);
-                elements [elements.length-1] = null;
-                break;
-            }
-        }
+        a = (T) elements[index];
+        System.arraycopy(elements, index + 1, elements, index, elements.length - index - 1);
+        elements[elements.length - 1] = null;
         elements = Arrays.copyOf(elements, size());
         return (T) a;
+
     }
 
     @Override
@@ -136,9 +149,9 @@ public  class MyArrayList<T> implements MyList <T> {
     }
 
     @Override
-    public int indexOf(Object value){
+    public int indexOf(Object value) {
         for (int i = 0; i < elements.length; i++) {
-            if(elements [i] == value){
+            if (elements[i] == value) {
                 return i;
             }
             elements = Arrays.copyOf(elements, size());

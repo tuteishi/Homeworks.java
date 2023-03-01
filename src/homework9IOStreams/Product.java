@@ -15,7 +15,6 @@ public class Product {
     //    File file = new File(String.join(File.separator, "resources" , "product.txt"));  для 8-й Java
     File file = Path.of("resources", "product.txt").toFile();
 
-
     public void createdFileOrder() {
         try {
             file.createNewFile();
@@ -31,7 +30,7 @@ public class Product {
     public void addProduct() {
         System.out.println("Enter product name: ");
         Scanner scanner = new Scanner(System.in);
-        String productName = scanner.next();
+        String productName = scanner.nextLine();
         Product product = new Product(productName);
         try (FileOutputStream fileOutputStream = new FileOutputStream(file, true)) {
             fileOutputStream.write(product.toString().getBytes(StandardCharsets.UTF_8));
@@ -49,9 +48,6 @@ public class Product {
 
     public void showProducts() {
         try (FileInputStream fileInputStream = new FileInputStream(file)) {
-//            byte[] bytes = fileInputStream.readAllBytes();
-//            String productText = new String(bytes);
-//            System.out.println(productText);
             byte[] bytes = new byte[fileInputStream.available()];
             int count = 0;
             byte currentbByte;
@@ -74,7 +70,7 @@ public class Product {
             Scanner scanner = new Scanner(System.in);
             String choiceID = scanner.next();
             while ((line = bufferedReader.readLine()) != null) {
-                if (line.regionMatches(11, choiceID, 0, 10)) {
+                if (line.regionMatches(13, choiceID, 0, 10)) {
                     System.out.println("Product with ID: " + choiceID + " delete.");
                 } else {
                     lines.add(line);
@@ -110,9 +106,9 @@ public class Product {
     @Override
     public String toString() {
         return
-                "Product ID:" + idProduct +
-                        ", Product name:'" + nameProduct + '\'' +
-                        ", Date:" + dateProduct
+                " |Product ID:" + idProduct +
+                        "| Product name:'" + nameProduct + '\'' +
+                        "| Date:" + dateProduct
                         + "|";
     }
 }
